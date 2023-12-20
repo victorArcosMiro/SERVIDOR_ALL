@@ -1,0 +1,69 @@
+body {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    height: 20%;
+    width: 100%;
+    background-color: black;
+    font-size: 1.5em;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+section {
+    display: flex;
+    height: 60%;
+    width: 100%;
+    min-height: 1000px;
+}
+
+nav {
+    min-height: 20%;
+    width: 20%;
+    background-color: gray;
+}
+aside {
+    min-height: 20%;
+    width: 20%;
+    background-color: gray;
+}
+
+main {
+    min-height: 20%;
+    width: 60%;
+    text-align: center;
+    align-items: center;
+    padding: 10px;
+}
+
+footer {
+    height: 20%;
+    width: 100%;
+    background-color: black;
+}
+
+table, th, td {
+    border: solid 1px black;
+    color: black;
+    border-collapse: collapse;
+    padding: 5px;
+    text-align: center;
+}
+
+table {
+    margin: 0 auto;
+}
+
+.rojo{
+    color: red;
+}
+
+.azul{
+    color: blue;
+}

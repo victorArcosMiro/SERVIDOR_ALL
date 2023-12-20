@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+  // Solicitar al usuario su nombre
+  var nombre = prompt("Por favor, ingresa tu nombre:");
+
+// Solicitar al usuario su edad
+var edad = prompt("Por favor, ingresa tu edad:");
+
+// Solicitar al usuario su altura
+var altura = prompt("Por favor, ingresa tu altura (en centímetros):");
+
+// Solicitar al usuario su estado civil (true o false)
+var casado = confirm("¿Estás casado/a? OK para sí, Cancelar para no");
+
+// Mostrar los datos en la página con saltos de línea
+document.write("<h1>Tus Datos:</h1>");
+document.write("<p>Nombre: " + nombre + "</p>");
+document.write("<p>Edad: " + edad + " años</p>");
+document.write("<p>Altura: " + altura + " cm</p>");
+document.write("<p>¿Casado/a? " + (casado ? "Sí" : "No") + "</p>");
+  </script>
+</body>
+</html>
