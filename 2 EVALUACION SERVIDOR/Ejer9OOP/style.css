@@ -1,0 +1,337 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat Medium', sans-serif;
+}
+
+/*HEADER*//*HEADER*//*HEADER*//*HEADER*//*HEADER*//*HEADER*//*HEADER*/
+img.logo{
+    float: left;
+    height: 150px;
+    width: 150px;
+    margin-left: 0;
+    border-radius: 10px;
+    border: solid 1px white;
+}
+
+.header{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.div_logo{
+    padding-left: 20px;
+    width: 20%;
+}
+.titulo{
+    width: 80%;
+}
+
+header{
+    height: 20vh;
+    min-width: 100vw;
+    background-color: black;
+    font-size: 1.5em;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav{
+    width: 100%;
+    margin-top: 10px;
+}
+/*HEADER*//*HEADER*//*HEADER*//*HEADER*//*HEADER*//*HEADER*/
+
+/*-------------------------------------------------------------------------*/
+
+/*NAV*//*NAV*//*NAV*//*NAV*//*NAV*//*NAV*//*NAV*//*NAV*//*NAV*//*NAV*/
+
+nav{
+    max-height: 1000vh;
+    min-height: 35vh;
+    min-width: 15%;
+    background-color: gray;
+    font-size:x-large;
+    padding-bottom: 20px;
+}
+nav .nav{
+    position: sticky;
+    top: 50px;
+    z-index: 1000; /* Asegura que la barra de navegación esté sobre otros elementos al hacer scroll */
+}
+
+.menu, .temas{
+    width: 100%;
+}
+.menu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.temas{
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.nav .temas .tema a:hover{
+    color: white;
+    text-decoration: line-through;
+}
+
+.nav .temas .tema a{
+    text-decoration: none;
+    color: black;
+}
+
+                /*Inicio nav_HEADER*//*Inicio nav_HEADER*//*Inicio nav_HEADER*//*Inicio nav_HEADER*/
+                .nav_header {
+                    width: 100%;
+                    height: 3em;
+                    position: sticky;
+                    top: 0;
+                    border-radius: 40px;
+                    z-index: 1000; /* Asegura que la barra de navegación esté sobre otros elementos al hacer scroll */
+                }
+
+                .barnav {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: x-large;
+                }
+
+                .menu_header {
+                    width: 20%;
+                    height: 100%;
+                    background-color: lightgray;
+                    color: black;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+                }
+
+
+
+                .menu_header a {
+                    text-decoration: none;
+                    color: black;
+
+                    display: flex;
+                    text-decoration: none;
+                    color: black;
+                    justify-content: center;
+                    align-items: center;
+
+                }
+
+                .menu_header {
+                    text-decoration: none;
+                    color: black;
+                }
+
+                .menu_header a:hover {
+                    color: white;
+                }
+
+                .menu_header:hover {
+                    background-color: black;
+                    color: white;
+                    text-decoration: line-through;
+                }
+
+                .menu_header a {
+                    height: 100%;
+                    width: 100%;
+                }
+            /*Inicio nav_HEADER*//*Inicio nav_HEADER*//*Inicio nav_HEADER*/
+
+
+/*NAV*//*NAV*//*NAV*//*NAV*//*NAV*//*NAV*//*NAV*//*NAV*//*NAV*//*NAV*/
+/*-------------------------------------------------------------------------*/
+
+body{
+    min-height: 100vh;
+    min-width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+section{
+    display: flex;
+    max-height: 1000vh;
+    min-height: 35vh;
+    min-width: 15%;
+    flex: 1;
+
+}
+/*---------------------------------------------------------------------------------*/
+
+/*MAIN*//*MAIN*//*MAIN*//*MAIN*//*MAIN*//*MAIN*//*MAIN*//*MAIN*//*MAIN*//*MAIN*//*MAIN*/
+
+main{
+    max-height: 1000vh;
+    min-height: 35vh;
+    min-width: 60%;
+    padding-bottom: 20px;
+}
+main .index_user h4.inicio{
+    width: 50%;
+}
+main .index_user .user{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+main .index_user{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+/*MAIN*//*MAIN*//*MAIN*//*MAIN*//*MAIN*//*MAIN*//*MAIN*//*MAIN*//*MAIN*//*MAIN*//*MAIN*/
+
+/*---------------------------------------------------------------------------------*/
+
+/*ASIDE*//*ASIDE*//*ASIDE*//*ASIDE*//*ASIDE*//*ASIDE*//*ASIDE*//*ASIDE*//*ASIDE*//*ASIDE*//*ASIDE*//*ASIDE*//*ASIDE*/
+
+aside{
+    max-height: 1000vh;
+    min-height: 35vh;
+    min-width: 15%;
+    background-color: gray;
+    display: flex;
+    /*Para que se situen uno despues del otro de forma horizontal, osea en fila (ROW)*/
+    flex-direction: column;
+    /*Pero los elementos deben bien alineados VERTICAL y HORIZAONTALMENTE en su padre.nav*/
+    justify-content: center;/*HORIZONTALMENTE*/
+    align-items: center;/*VERTICALMENTE*/
+    padding-bottom: 20px;
+}
+
+aside .imagenes_aside{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    /*Para que se situen uno despues del otro de forma horizontal, osea en fila (ROW)*/
+    flex-direction: column;
+    /*Pero los elementos deben bien alineados VERTICAL y HORIZAONTALMENTE en su padre.nav*/
+    justify-content: space-around;/*HORIZONTALMENTE*/
+    align-items: center;/*VERTICALMENTE*/
+}
+
+.imagenes_aside img{
+    width: 100px;
+    height: 100px;
+}
+
+.imagenes_aside img:hover{
+    width: 120px;
+    height: 120px;
+}
+
+
+/*ASIDE*//*ASIDE*//*ASIDE*//*ASIDE*//*ASIDE*//*ASIDE*//*ASIDE*//*ASIDE*//*ASIDE*//*ASIDE*//*ASIDE*//*ASIDE*//*ASIDE*/
+
+/*---------------------------------------------------------------------------------*/
+
+/*FOOTER*//*FOOTER*//*FOOTER*//*FOOTER*//*FOOTER*//*FOOTER*//*FOOTER*//*FOOTER*//*FOOTER*//*FOOTER*//*FOOTER*//*FOOTER*/
+footer{
+    height: 19.2vh;
+    min-width: 100vw;
+    background-color: black;
+    color: white;
+    display: flex;
+    /*Para que se situen uno despues del otro de forma horizontal, osea en fila (ROW)*/
+    flex-direction: column;
+    /*Pero los elementos deben bien alineados VERTICAL y HORIZAONTALMENTE en su padre.nav*/
+    justify-content: center;/*HORIZONTALMENTE*/
+    align-items: center;/*VERTICALMENTE*/
+}
+.imagenes_footer{
+    width: 60%;
+    height: 60%;
+    display: flex;
+    /*Para que se situen uno despues del otro de forma horizontal, osea en fila (ROW)*/
+    flex-direction: row;
+    /*Pero los elementos deben bien alineados VERTICAL y HORIZAONTALMENTE en su padre.nav*/
+    justify-content: center;/*HORIZONTALMENTE*/
+    align-items: center;/*VERTICALMENTE*/
+}
+.img_footer img{
+    width: 100px;
+    height: 100px;
+}
+
+.img_footer img:hover{
+    width: 110px;
+    height: 110px;
+}
+
+
+
+/*FOOTER*//*FOOTER*//*FOOTER*//*FOOTER*//*FOOTER*//*FOOTER*//*FOOTER*//*FOOTER*/
+
+/*---------------------------------------------------------------------------------*/
+
+/*TABLAS*//*TABLAS*//*TABLAS*//*TABLAS*//*TABLAS*//*TABLAS*//*TABLAS*//*TABLAS*//*TABLAS*/
+
+
+table{
+border: 0px;
+}
+
+td.matriz{
+    padding: 5px;
+    width: 20px;
+    height: 20px;
+    text-align: right;
+}
+
+table, tr, th, td{
+    border: solid 1px black;
+    border-collapse: collapse;
+}
+th{
+    background-color: aqua;
+}
+.table tr:nth-child(odd) {
+    background-color: orange;
+}
+
+.table tr:nth-child(even) {
+    background-color: pink;
+}
+
+th, td{
+    padding: 5px;
+}
+div.menu{
+    margin-top: 15px;
+    max-height: 100%;
+    max-width: 100%;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+img.top, img.bottom{
+    max-width: 40%;
+    height: auto;
+}
+
+img.bottom{
+    transform: rotate(180deg); /* Gira la imagen 180 grados */
+}

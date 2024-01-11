@@ -7,6 +7,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <?php
@@ -80,7 +81,7 @@ class Menu
         if (!empty($this->primerosPlatos)) {
             foreach ($this->primerosPlatos as $plato) {
 
-                print "- " . $plato . "<br>";
+                print $plato . "<br>";
             }
         }
     }
@@ -89,7 +90,7 @@ class Menu
         if (!empty($this->segundosPlatos)) {
             foreach ($this->segundosPlatos as $plato) {
 
-                print "- " . $plato . "<br>";
+                print $plato . "<br>";
             }
         }
     }
@@ -98,11 +99,19 @@ class Menu
         if (!empty($this->postres)) {
             foreach ($this->postres as $plato) {
 
-                print "- " . $plato . "<br>";
+                print $plato . "<br>";
             }
         }
     }
 }
+?>
+<header>
+    <h1>RESTAURANTE</h1>
+</header>
+<section>
+    <nav></nav>
+    <main>
+        <?php
 
 if ($_REQUEST) {
     if(isset($_REQUEST["crear"])) {
@@ -121,39 +130,66 @@ if ($_REQUEST) {
 
         // Deserializa la cadena para obtener el objeto original
         $menu = unserialize($_SESSION['menu']);
-        print "<h1>Menú del " . $menu->getDia() . ", " . $menu->getFecha() . "</h1>";
+
         if (isset($_GET['agregarPrimerPlato'])) {
             //Recupero el nuevo plato introducido por formulario
             $nuevoPrimerPlato = $_GET['pPlato'];
-            //Obtengo los platos que ya se han guardado en el array
-            $primerosPlatosActuales = $menu->getPrimerosPlatos();
-            //Añado el nuevo plato
-            $primerosPlatosActuales[] = $nuevoPrimerPlato;
-            //Actualizo los PrimerosPlatos en el Objeto
-            $menu->setPrimerosPlatos($primerosPlatosActuales);
-
+            if(strlen($nuevoPrimerPlato) > 0) {
+                //Obtengo los platos que ya se han guardado en el array
+                $primerosPlatosActuales = $menu->getPrimerosPlatos();
+                //Añado el nuevo plato
+                $primerosPlatosActuales[] = $nuevoPrimerPlato;
+                //Actualizo los PrimerosPlatos en el Objeto
+                $menu->setPrimerosPlatos($primerosPlatosActuales);
+            }
         } elseif (isset($_GET['agregarSegundoPlato'])) {
-            $nuevoSegundoPlato        = $_GET['sPlato'];
-            $segundosPlatosActuales   = $menu->getSegundosPlatos();
-            $segundosPlatosActuales[] = $nuevoSegundoPlato;
-            $menu->setSegundosPlatos($segundosPlatosActuales);
-
+            $nuevoSegundoPlato = $_GET['sPlato'];
+            if(strlen($nuevoSegundoPlato) > 0) {
+                $segundosPlatosActuales   = $menu->getSegundosPlatos();
+                $segundosPlatosActuales[] = $nuevoSegundoPlato;
+                $menu->setSegundosPlatos($segundosPlatosActuales);
+            }
         } elseif (isset($_GET['agregarPostre'])) {
-            $nuevoPostre       = $_GET['tPlato'];
-            $PostresActuales   = $menu->getPostres();
-            $PostresActuales[] = $nuevoPostre;
-            $menu->setPostres($PostresActuales);
+            $nuevoPostre = $_GET['tPlato'];
+            if(strlen($nuevoPostre) > 0) {
+                $PostresActuales   = $menu->getPostres();
+                $PostresActuales[] = $nuevoPostre;
+                $menu->setPostres($PostresActuales);
+            }
         }
 
-        $menu_serializado = serialize($menu);
-        //Se guarda la cadena de texto (objeto) en una variable de session
-        $_SESSION['menu'] = $menu_serializado;
-        ?>
+        if(isset($_GET['maquetar'])) {
+            ?>
+<div class='menu'>
+    <img class="top" src="adorno.jpg" alt="adorno">
+            <?php
+            print"<h1>Menú del día</h1>";
+            print $menu->getDia() . ", " . $menu->getFecha();
+
+            print "<h3>Primeros platos</h3>";
+            $menu->mostrarPrimerosPlatos();
+
+            print "<br><h3>Segundos platos</h3>";
+            $menu->mostrarSegundosPlatos();
+
+            print "<br><h3>Postres</h3>";
+            $menu->mostrarPostres();
+            ?>
+                <img class="bottom" src="adorno.jpg" alt="adorno">
+
+</div>
+            <?php
+        } else {
+            $menu_serializado = serialize($menu);
+            //Se guarda la cadena de texto (objeto) en una variable de session
+            $_SESSION['menu'] = $menu_serializado;
+            print "<h1>Menú del " . $menu->getDia() . ", " . $menu->getFecha() . "</h1>";
+            ?>
         <form action="ej2.php" method="get">
             <label for="pPlato">Primeros platos:</label><br>
             <?php
-            $menu->mostrarPrimerosPlatos();
-        ?>
+                $menu->mostrarPrimerosPlatos();
+            ?>
             <input type="text" name="pPlato">
             <input type="submit" name="agregarPrimerPlato" value="Añadir">
 <br><br>
@@ -161,25 +197,27 @@ if ($_REQUEST) {
 
             <label for="sPlato">Segundos platos:</label><br>
             <?php
-             $menu->mostrarSegundosPlatos();
-        ?>
+                 $menu->mostrarSegundosPlatos();
+            ?>
             <input type="text" name="sPlato">
-
             <input type="submit" name="agregarSegundoPlato" value="Añadir">
 <br><br>
 
 
             <label for="tPlato">Postres:</label><br>
             <?php
-             $menu->mostrarPostres();
-        ?>
+                 $menu->mostrarPostres();
+            ?>
             <input type="text" name="tPlato">
             <input type="submit" name="agregarPostre" value="Añadir">
+<br><br>
+            <input type="submit" name="maquetar" value="Confeccionar carta">
         </form>
 
-        <?php
-    }
 
+        <?php
+        }
+    }
 } else {
     ?>
     <form action="ej2.php" method="get">
@@ -195,5 +233,9 @@ if ($_REQUEST) {
 }
 
 ?>
+    </main>
+    <aside></aside>
+</section>
+<footer></footer>
 </body>
 </html>
