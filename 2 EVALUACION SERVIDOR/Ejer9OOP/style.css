@@ -183,6 +183,12 @@ main{
     min-height: 35vh;
     min-width: 60%;
     padding-bottom: 20px;
+    display: flex;
+    /*Para que se situen uno despues del otro de forma horizontal, osea en fila (ROW)*/
+    flex-direction: column;
+    /*Pero los elementos deben bien alineados VERTICAL y HORIZAONTALMENTE en su padre.nav*/
+    justify-content: space-around;/*HORIZONTALMENTE*/
+    align-items: center;/*VERTICALMENTE*/
 }
 main .index_user h4.inicio{
     width: 50%;
@@ -213,7 +219,7 @@ aside{
     background-color: gray;
     display: flex;
     /*Para que se situen uno despues del otro de forma horizontal, osea en fila (ROW)*/
-    flex-direction: column;
+    flex-direction: row;
     /*Pero los elementos deben bien alineados VERTICAL y HORIZAONTALMENTE en su padre.nav*/
     justify-content: center;/*HORIZONTALMENTE*/
     align-items: center;/*VERTICALMENTE*/
@@ -334,4 +340,14 @@ img.top, img.bottom{
 
 img.bottom{
     transform: rotate(180deg); /* Gira la imagen 180 grados */
+}
+
+div.main_3{
+    width: 90%;
+    display: flex;
+    /*Para que se situen uno despues del otro de forma horizontal, osea en fila (ROW)*/
+    flex-direction: row;
+    /*Pero los elementos deben bien alineados VERTICAL y HORIZAONTALMENTE en su padre.nav*/
+    justify-content: space-around;/*HORIZONTALMENTE*/
+    align-items: center;/*VERTICALMENTE*/
 }
