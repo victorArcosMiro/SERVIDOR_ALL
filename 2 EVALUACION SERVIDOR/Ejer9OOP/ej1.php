@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <?php
@@ -42,7 +43,7 @@
         }
         public function getDatosPersona()
         {
-            return "<strong>Nombre:</strong> " . $this->nombre . " - <strong>Apellido:</strong> " . $this->apellido . " - ";
+            return  $this->nombre . " " . $this->apellido . " - ";
         }
     }
 //------------------------//
@@ -83,19 +84,34 @@ class Empleado extends Persona
     }
     public function getDatosPersona_Empleado(){
         $datosPersona = parent::getDatosPersona();
-        $datosEmpleado = $datosPersona . "<strong>Puesto:</strong> " . $this->puesto . " - <strong>Sueldo:</strong> ";
+        $datosEmpleado = $datosPersona . $this->puesto . " - ";
         if($this->sueldo < 2000) {
-            $datosEmpleado = $datosEmpleado . "No debe pagar";
+            $datosEmpleado = $datosEmpleado . "No debe pagar impuestos.";
+        }else{
+            $datosEmpleado = $datosEmpleado . "Si debe pagar impuestos.";
         }
-        $datosEmpleado = $datosEmpleado . "Si debe pagar impuestos";
+
+
         return $datosEmpleado;
     }
 }
 
 $objEmpleado = new Empleado("Victor", "Arcos", "CEO", 10000000);
-
-echo "Datos de Empleado -> " .$objEmpleado->getDatosPersona_Empleado()."<br>";
-
+$objEmpleado2 = new Empleado("Pedro", "Perez", "Asistente", 1000);
     ?>
+      <header>
+        <h1>CLASE EMPLEADO</h1>
+    </header>
+    <section>
+        <nav></nav>
+        <main>
+            <?php
+echo $objEmpleado->getDatosPersona_Empleado()."<br><br><br>";
+echo $objEmpleado2->getDatosPersona_Empleado()."<br>";
+            ?>
+        </main>
+        <aside></aside>
+    </section>
+    <footer></footer>
 </body>
 </html>

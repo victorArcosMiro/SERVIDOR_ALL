@@ -183,10 +183,13 @@ if ($_REQUEST) {
             $menu_serializado = serialize($menu);
             //Se guarda la cadena de texto (objeto) en una variable de session
             $_SESSION['menu'] = $menu_serializado;
+            ?>
+            <div class="content">
+            <?php
             print "<h1>Menú del " . $menu->getDia() . ", " . $menu->getFecha() . "</h1>";
             ?>
         <form action="ej2.php" method="get">
-            <label for="pPlato">Primeros platos:</label><br>
+            <label for="pPlato"><strong>Primeros platos:</strong></label><br>
             <?php
                 $menu->mostrarPrimerosPlatos();
             ?>
@@ -195,7 +198,7 @@ if ($_REQUEST) {
 <br><br>
 
 
-            <label for="sPlato">Segundos platos:</label><br>
+            <label for="sPlato"><strong>Segundos platos:</strong></label><br>
             <?php
                  $menu->mostrarSegundosPlatos();
             ?>
@@ -204,7 +207,7 @@ if ($_REQUEST) {
 <br><br>
 
 
-            <label for="tPlato">Postres:</label><br>
+            <label for="tPlato"><strong>Postres:</strong></label><br>
             <?php
                  $menu->mostrarPostres();
             ?>
@@ -213,6 +216,7 @@ if ($_REQUEST) {
 <br><br>
             <input type="submit" name="maquetar" value="Confeccionar carta">
         </form>
+        </div>
 
 
         <?php
@@ -220,6 +224,7 @@ if ($_REQUEST) {
     }
 } else {
     ?>
+        <div class="content">
     <form action="ej2.php" method="get">
         <label for="dia">Dia de la semana: </label>
         <input type="text" name="dia">
@@ -229,6 +234,7 @@ if ($_REQUEST) {
         <br>
         <input type="submit" value="Diseñar menú" name="crear">
     </form>
+</div>
     <?php
 }
 

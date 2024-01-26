@@ -53,7 +53,7 @@ header{
 nav{
     max-height: 1000vh;
     min-height: 35vh;
-    min-width: 20%;
+    min-width: 15%;
     background-color: gray;
     font-size:x-large;
     padding-bottom: 20px;
@@ -182,12 +182,8 @@ main{
     max-height: 1000vh;
     min-height: 35vh;
     min-width: 60%;
+    padding: 5%;
     padding-bottom: 20px;
-    text-align: center;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 main .index_user h4.inicio{
     width: 50%;
@@ -214,7 +210,7 @@ main .index_user{
 aside{
     max-height: 1000vh;
     min-height: 35vh;
-    min-width: 20%;
+    min-width: 15%;
     background-color: gray;
     display: flex;
     /*Para que se situen uno despues del otro de forma horizontal, osea en fila (ROW)*/
@@ -322,70 +318,3 @@ th{
 th, td{
     padding: 5px;
 }
-
-div.menu, div.content{
-    margin-top: 15px;
-    max-height: 100%;
-    max-width: 100%;
-    text-align: center;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-}
-
-img.top, img.bottom{
-    max-width: 40%;
-    height: auto;
-}
-.letrasAzules{
-    color:rgb(55, 55, 196);
-}
-
-img.bottom{
-    transform: rotate(180deg); /* Gira la imagen 180 grados */
-}
-/**-----------------EJERCICIO 3--------------------**/
-div.main_3{
-    height: 100%;
-    width: 90%;
-    text-align: center;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
-
-div.explicacion{
-
-}
-div.content_1, div.content_2{
-    max-height: 100%;
-    width: 45%;
-
-}
-div.main_3 form{
-}
-.resultado fieldset{
-    min-height: 50px;
-}
-.operacion fieldset{
-    min-height: 80px;
-
-}
-
- fieldset{
-    border-color:blue;
-    border-radius: 20px;
-    background-color: rgb(202, 207, 212);
-    display: flex;
-    justify-content: center;
-
-}
-#rectangulo1{
-    padding: 20px;
-}
-#rectangulo1 ul{
-    padding-left: 30px;
-    text-align: left;
-}
-/**-----------------EJERCICIO 3--------------------**/

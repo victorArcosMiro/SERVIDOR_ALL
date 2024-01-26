@@ -26,7 +26,7 @@ class Racional
             $this->denominador = intval($den);
         }
         // Simplificar el racional
-        $this->simplificar();
+
     }
     public function getNumerador()
     {
@@ -47,16 +47,92 @@ class Racional
     {
         $this->denominador = $denominador;
     }
-
-    private function simplificar()
+    public function __toString()
     {
-        $gcd = $this->calcularMCD($this->numerador, $this->denominador);
-        $this->numerador   /= $gcd;
-        $this->denominador /= $gcd;
+        $numerador   = $this->numerador;
+        $denominador = $this->denominador;
+        return $numerador . "/" . $denominador;
+    }
+    public function simplificar()
+    {
+        $gcd                     = $this->calcularMCD($this                    ->numerador, $this                    ->denominador);
+        $numeradorSimplificado   = $this->numerador   / $gcd;
+        $denominadorSimplificado = $this->denominador / $gcd;
+
+        // Devolver un nuevo objeto inicializado
+        $objResulatdo = new Racional($numeradorSimplificado, $denominadorSimplificado);
+
+        return $objResulatdo;
     }
 
+    public function sumar($obj2)
+    {
+        $a = $this->numerador;
+        $b = $this->denominador;
+
+        $c = $obj2->getNumerador();
+        $d = $obj2->getDenominador();
+
+        if ($b == $d) {
+            // Mismo denominador
+            $e            = $a + $c;
+            $objResultado = new Racional($e, $b);
+            return $objResultado;
+        }
+
+        $e = $a * $d + $b * $c;
+        $f = $b * $d;
+
+        $objResultado = new Racional($e, $f);
+        return $objResultado;
+    }
+    public function restar($obj2)
+    {
+        $a = $this->getNumerador();
+        $b = $this->getDenominador();
+
+        $c = $obj2->getNumerador();
+        $d = $obj2->getDenominador();
+        if ($b == $d) {//Mismo denominador
+            $e            = $a - $c;
+            $objResultado = new Racional($e, $b);
+            return $objResultado;
+        }
+
+        $e            = $a * $d            - $b            * $c;
+        $f            = $b * $d;
+        $objResultado = new Racional($e, $f);
+        return $objResultado;
+    }
+    public function multiplicar($obj2)
+    {
+        $a = $this->getNumerador();
+        $b = $this->getDenominador();
+
+        $c = $obj2->getNumerador();
+        $d = $obj2->getDenominador();
+
+        $e            = $a * $c;
+        $f            = $b * $d;
+        $objResultado = new Racional($e, $f);
+        return $objResultado;
+
+    }
+    public function division($obj2)
+    {
+        $a = $this->getNumerador();
+        $b = $this->getDenominador();
+
+        $c = $obj2->getNumerador();
+        $d = $obj2->getDenominador();
+
+        $e            = $a * $d;
+        $f            = $b * $c;
+        $objResultado = new Racional($e, $f);
+        return $objResultado;
+    }
     // Método privado para calcular el máximo común divisor (MCD)
-    private function calcularMCD($a, $b)
+    public function calcularMCD($a, $b)
     {
         while ($b != 0) {
             $temp = $b;
@@ -67,100 +143,59 @@ class Racional
     }
 
 }
-function separarNumeros($n)
-{
 
-    if(strpos($n, "+") !== false) {
-        $arrayNumero = explode("+", $n);
-    } elseif(strpos($n, "-") !== false) {
-        $arrayNumero = explode("-", $n);
-    } elseif(strpos($n, "*") !== false) {
-        $arrayNumero = explode("*", $n);
-    } elseif(strpos($n, ":") !== false) {
-        $arrayNumero = explode(":", $n);
+    function separarNumeros($n)
+    {
+
+        if(strpos($n, "+") !== false) {
+            $_SESSION['operador'] = "+";
+            $arrayNumero          = explode("+", $n);
+        } elseif(strpos($n, "-") !== false) {
+            $_SESSION['operador'] = "-";
+            $arrayNumero          = explode("-", $n);
+        } elseif(strpos($n, "*") !== false) {
+            $_SESSION['operador'] = "*";
+            $arrayNumero          = explode("*", $n);
+        } elseif(strpos($n, ":") !== false) {
+            $_SESSION['operador'] = ":";
+            $arrayNumero          = explode(":", $n);
+        }
+        $numero1 = $arrayNumero[0];
+        $numero2 = $arrayNumero[1];
+
+        if (is_string($numero1) && strpos($numero1, "/") !== false) {
+            $operador1 = explode('/', $numero1);
+            $obj1      = new Racional();
+
+            $numerador   = intval($operador1[0]);
+            $denominador = intval($operador1[1]);
+
+            $obj1->setNumerador($numerador);
+            $obj1->setDenominador($denominador);
+
+            $_SESSION['numero1'] = serialize($obj1);
+        } else {
+            $obj1                = new Racional($numero1);
+            $_SESSION['numero1'] = serialize($obj1);
+        }
+        if (is_string($numero2) && strpos($numero2, "/") !== false) {
+            $operador2 = explode('/', $numero2);
+            $obj2      = new Racional();
+
+            $numerador2   = intval($operador2[0]);
+            $denominador2 = intval($operador2[1]);
+
+            $obj2->setNumerador($numerador2);
+            $obj2->setDenominador($denominador2);
+
+            $_SESSION['numero2'] = serialize($obj2);
+        } else {
+            $obj2                = new Racional($numero2);
+            $_SESSION['numero2'] = serialize($obj2);
+        }
     }
-    $numero1 = $arrayNumero[0];
-    $numero2 = $arrayNumero[1];
 
-    if (is_string($numero1) && strpos($numero1, "/") !== false) {
-        $operador1 = explode('/', $numero1);
-        $obj1      = new Racional();
 
-        $numerador   = intval($operador1[0]);
-        $denominador = intval($operador1[1]);
-
-        $obj1->setNumerador($numerador);
-        $obj1->setDenominador($denominador);
-
-        $_SESSION['numero1'] = serialize($obj1);
-    }else{
-        $obj1 = new Racional($numero1);
-        $_SESSION['numero1'] = serialize($obj1);
-    }
-    if (is_string($numero2) && strpos($numero2, "/") !== false) {
-        $operador2 = explode('/', $numero2);
-        $obj2      = new Racional();
-
-        $numerador2   = intval($operador2[0]);
-        $denominador2 = intval($operador2[1]);
-
-        $obj2->setNumerador($numerador2);
-        $obj2->setDenominador($denominador2);
-
-        $_SESSION['numero2'] = serialize($obj2);
-    }else{
-        $obj2 = new Racional($numero2);
-        $_SESSION['numero2'] = serialize($obj2);
-    }
-}
-function simplificarRacional($numerador, $denominador) {
-    // Encuentra el máximo común divisor (MCD) utilizando el algoritmo de Euclides
-    $mcd = function($a, $b) use (&$mcd) {
-        return ($b === 0) ? $a : $mcd($b, $a % $b);
-    };
-
-    // Calcula el MCD del numerador y el denominador
-    $gcd = $mcd($numerador, $denominador);
-
-    // Simplifica el numerador y el denominador dividiéndolos por el MCD
-    $numeradorSimplificado = $numerador / $gcd;
-    $denominadorSimplificado = $denominador / $gcd;
-
-    // Devuelve el resultado como un array
-    return [$numeradorSimplificado, $denominadorSimplificado];
-}
-function suma($obj1,$obj2){
-    $a = $obj1->getNumerador();
-    $b = $obj1->getDenominador();
-
-    $c = $obj2->getNumerador();
-    $d = $obj2->getDenominador();
-
-    if($b == $d){//Mismo denominador
-        $e = $a+$c;
-        $objResultado = new Racional($e, $b);
-        return $objResultado;
-    }else{
-        $comunDenominador = calcularMCD($b,$d);
-
-        $a = $a * $d;
-        $c = $c * $b;
-
-        $numerador = $a + $c;
-        $arrayNumeroRacionalSimplificado = simplificarRacional($numerador,$comunDenominador);
-        $objResultado = new Racional($arrayNumeroRacionalSimplificado[0], $arrayNumeroRacionalSimplificado[1]);
-        return $objResultado;
-    }
-}
-function calcularMCD($a, $b)
-{
-    while ($b != 0) {
-        $temp = $b;
-        $b    = $a % $b;
-        $a    = $temp;
-    }
-    return $a;
-}
     ?>
     <header>
         <h1>CALCULADORA RACIONAL</h1>
@@ -168,47 +203,95 @@ function calcularMCD($a, $b)
     <section>
         <nav></nav>
         <main>
+        <?php
+
+    ?>
         <div class="main_3">
             <?php
-                include "include/reglas_calculadora.php";
+            include "include/reglas_calculadora.php";
     ?>
             <div class="content_2">
             <div class="operacion"><br><br>
                     <form action="ej3.php" method="get">
                         <fieldset>
-                        <legend>Establece la operación:</legend>
-                        <label>Operación:</label>
-                        <input name='operacion' type='text'>
-                        <input type="submit" name="calcular" value="calcular">
+                        <legend><strong>Establece la operación</strong></legend>
+                        <label style="margin-top: 10px;">Operación:</label>
+                        <input name='operacion' type='text' pattern="^\d+(\/\d+)?\s*[+\-\*\/:]\s*\d+(\/\d+)?$" required>
+                        <input type="submit" name="calcular" value="Calcular">
                         </fieldset>
                     </form>
                 </div>
                 <div class="resultado">
                     <form>
                         <fieldset>
-                        <legend>Resultado</legend>
+                        <legend><strong>Resultado</strong></legend>
                         <?php
                         if (isset($_GET['calcular'])) {
                             $operacion = $_GET['operacion'];
                             separarNumeros($operacion);
-
+                            ?>
+                            <table class="tablaRacionales">
+                                <tr>
+                                    <th>Concepto</th>
+                                    <th>Valores</th>
+                                </tr>
+                            <?php
                             if (isset($_SESSION['numero1'])) {
                                 $obj1 = unserialize($_SESSION['numero1']);
-                                print "Impresión del primer número<br>";
-                                print $obj1->getNumerador() . "/" . $obj1->getDenominador() ."<br>";
+                                ?>
+                                <tr>
+                                    <td>Operando 1</td>
+                                    <td> <?php print $obj1->__toString(); ?> </td>
+                                </tr>
+                                <?php
                             }
                             if (isset($_SESSION['numero2'])) {
                                 $obj2 = unserialize($_SESSION['numero2']);
-                                print "Impresión del segundo número<br>";
-                                print $obj2->getNumerador() . "/" . $obj2->getDenominador();
+                                ?>
+                                <tr>
+                                    <td>Operando 2</td>
+                                    <td> <?php print $obj2->__toString(); ?> </td>
+                                </tr>
+                                <?php
                             }
-                            print "<br>Resultado:";
-                            $objResultado = suma($obj1,$obj2);
-                            print $objResultado->getNumerador() . "/" . $objResultado->getDenominador();
+                            ?>
+                            <tr>
+                                <td>Operación</td>
+                                <td> <?php print $_SESSION['operador']; ?> </td>
+                            </tr>
+                            <tr>
+                                <td>Resultado</td>
+                                <td> <?php switch ($_SESSION['operador']) {
+                                    case "+":
+                                        $objResultado = $obj1->sumar($obj2);
+                                        break;
+                                    case "-":
+                                        $objResultado = $obj1->restar($obj2);
+                                        $objResultado->__toString();
+                                        break;
+                                    case "*":
+                                        $objResultado = $obj1->multiplicar($obj2);
+                                        $objResultado->__toString();
+                                        break;
+                                    case ":":
+                                        $objResultado = $obj1->division($obj2);
+                                        $objResultado->__toString();
+                                        break;
+                                }
+                            print $objResultado;
+                            ?> </td>
+                            </tr>
+                            <tr>
+                                <td>Resultado Simplificado</td>
+                                <td> <?php print $objResultado->simplificar(); ?> </td>
+                            </tr>
+                            </table>
 
+                            <?php
                         }
-                        ?>
+    ?>
                         </fieldset>
+
                     </form>
                 </div>
             </div>

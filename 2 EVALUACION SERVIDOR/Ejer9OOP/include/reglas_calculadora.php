@@ -1,11 +1,11 @@
 <div class="content_1">
-<fieldset>
-    <legend>Reglas de uso de la calculadora</legend>
+<fieldset id="rectangulo1">
+    <legend><strong>Reglas de uso de la calculadora</strong></legend>
     <ul>
         <li>La calculadora se usa escribiendo la operación.</li>
-        <li>La operación será <strong>Operand_1 operación Operando_2.</strong></li>
+        <li>La operación será <strong>Operando_1 operación Operando_2.</strong></li>
         <li>Cada operando puede ser número <i>positivo</i> <strong>real o racional</strong></li>
-        <li>Los operandos racionales permitidos son <div class="letrasAzules">+ . * /</div></li>
+        <li>Los operandos racionales permitidos son <strong><div class="letrasAzules">+ - * :</div></strong></li>
         <li>No se debe dejar espacios en blaco entre operando y operación</li>
         <li>Ejemplos:</li>
         <ul>

@@ -66,16 +66,16 @@ function dibujarArrayOrdenadoPorValor($array)
 <!DOCTYPE html>
 <html lang="en">
     <?php
-    include('../includes/meta_datos.php');
-    ?>
+    include '../includes/meta_datos.php';
+?>
 <body>
 <?php
-include('../includes/header.php');
-include('../includes/nav_header.php');
+include '../includes/header.php';
+include '../includes/nav_header.php';
 ?>
 <section>
 <?php
-include('../includes/nav_arrays.php');
+include '../includes/nav_arrays.php';
 ?>
 <main>
 <h4><a href="index.php">Inicio Ejercicios - Arrays</a></h4>
@@ -107,25 +107,25 @@ if (!$_REQUEST) {
     //Obtenemos los puntos del equipo que nos interesa
     $puntos = $listaEquipos[$nombreEquipo];
 
-    $lista=$listaEquipos;   //Guardamos la lista en una variable auxiliar para no perder los índices
+    $lista = $listaEquipos;   //Guardamos la lista en una variable auxiliar para no perder los índices
     rsort($listaEquipos);   //Este comando ordena la lista de equipos por puntos y convierte el índice a escalar
 
     //Se obtiene la posición del equipo en el array convertido a array escalar
     $posicion = array_search($puntos, $listaEquipos) + 1;
 
     //Mostramos los resultados obtenidos
-    print "<br><p>El $nombreEquipo tiene $puntos puntos, ahora mismo es el ".$posicion."º en la clasificación.</p>";
+    print "<br><p>El $nombreEquipo tiene $puntos puntos, ahora mismo es el " . $posicion . "º en la clasificación.</p>";
     print "<br><a href='liga_futbol.php'>Nueva consulta</a><br>";
     dibujarArrayOrdenadoPorValor($lista);
 }
 ?>
 </main>
 <?php
-include('../includes/aside.php');
+include '../includes/aside.php';
 ?>
 </section>
 <?php
-include('../includes/footer.php');
+include '../includes/footer.php';
 ?>
 </body>
 </html>
