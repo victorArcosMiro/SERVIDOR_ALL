@@ -2,6 +2,7 @@
 
 include "gamasController.php";
 include "productosController.php";
+include "showEmpleados.php";
 
 if($_REQUEST){
     $gama = $_GET['opciones'];
