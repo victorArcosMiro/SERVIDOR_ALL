@@ -55,7 +55,7 @@ $empleados = $data['empleados'];
                         </tr>
                         <tr>
                             <td><label for="limiteCredito">Límite de Crédito:</label></td>
-                            <td><input type="number" id="limiteCredito" name="limiteCredito" value="<?php print $clientes[0][12]; ?>" required></td>
+                            <td><input type="number" id="limiteCredito" name="limiteCredito" value="<?php print $clientes[0][13]; ?>" required></td>
                         </tr>
                         <tr>
                             <td><label for="codigoEmpleadoRepVentas">Código Empleado:</label></td>
@@ -63,6 +63,9 @@ $empleados = $data['empleados'];
                                 <select id="codigoEmpleadoRepVentas" name="codigoEmpleadoRepVentas" required>
                                 <?php
                                 foreach($empleados as $empleado){
+                                    if($empleado[0] == $clientes[0][12]){
+                                        echo '<option selected value="' . $empleado[0] . '">' . $empleado[0]. " - " . $empleado[1] . " " . $empleado[2] . '</option>';
+                                    }
                                         echo '<option value="' . $empleado[0] . '">' . $empleado[0]. " - " . $empleado[1] . " " . $empleado[2] . '</option>';
                                 }
                                 ?>

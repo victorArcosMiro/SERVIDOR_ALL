@@ -40,6 +40,22 @@ class ClientesController
         $clientes         = new Clientes();
         $data['clientes'] = $clientes->updateCliente($id, $nombreCliente, $nombreContacto, $apellidoContacto, $telefono, $fax, $lineaDireccion1, $lineaDireccion2, $ciudad, $region, $pais, $codigoPostal, $codigoEmpleado, $limiteCredito);
 
+        $data['datos'] = array(
+            'id' => $id,
+            'nombreCliente' => $nombreCliente,
+            'nombreContacto' => $nombreContacto,
+            'apellidoContacto' => $apellidoContacto,
+            'telefono' => $telefono,
+            'fax' => $fax,
+            'lineaDireccion1' => $lineaDireccion1,
+            'lineaDireccion2' => $lineaDireccion2,
+            'ciudad' => $ciudad,
+            'region' => $region,
+            'pais' => $pais,
+            'codigoPostal' => $codigoPostal,
+            'codigoEmpleado' => $codigoEmpleado,
+            'limiteCredito' => $limiteCredito
+        );
         View::Show('showClientes', $data);
     }
 }

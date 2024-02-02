@@ -1,29 +1,25 @@
-<!--
-<h1>Listado de Clientes</h1>
-<table>
-    <tr>
-        <th>Codigo de Cliente</th>
-        <th>Nombre del Cliente</th>
-        <th>Nombre de Contacto</th>
-        <th>Telefono</th>
-    </tr>
--->
+
      <?php
      $clientes = $data['clientes'];
-     if($clientes>0){
-        print "Insercción exitosa.";
-     }else{
-        print "Error en la insercción.";
+     if($clientes > 0) {
+         print "Insercción exitosa.";
+     } else {
+         print "Error en la insercción.";
      }
-  /*
-     foreach($clientes as $cliente) {
-        print "<tr>";
-            print "<td>" . $cliente[0] . "</td> ";
-            print "<td>" . $cliente[1] . "</td> ";
-            print "<td>" . $cliente[2] . "</td> ";
-            print "<td>" . $cliente[4] . "</td> ";
-        print "</tr>";
+     print "<br>";
+     $datos = $data['datos'];
+     print "Datos del cliente modificado:<br>";
+
+     // Imprimir datos en una tabla
+     print '<table border="1">';
+     foreach ($data['datos'] as $clave => $valor) {
+         print '<tr>';
+         print '<td>' . ucfirst(str_replace('_', ' ', $clave)) . '</td>';
+         print '<td>' . $valor . '</td>';
+         print '</tr>';
      }
-     */
+     print '</table>';
+
      ?>
-</table>
+     <br>
+     <a href="./index.php">Modificar otro cliente</a>
